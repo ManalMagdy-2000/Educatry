@@ -1,0 +1,2 @@
+# Educatry
+Educatry is a system that has been proposed to allow schools to request for help from the general public.  The schools may schedule tutorials for students who need remedial education, or request for resources such  as mobile devices, network routers or personal computers.  Volunteers can then check Educatry for requests and make an offer to volunteer for any requests that  they can fulfill, for example to help out in a tutorial or donate digital devices. The school administrator will review the offers for their requests and then contact the volunteers themselves
