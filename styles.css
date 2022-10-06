@@ -1,0 +1,20 @@
+/* Changing breadcrumb separator */
+.breadcrumb-item + .breadcrumb-item::before {
+    content: ">";
+}
+
+.breadcrumb {
+    background-color: white;
+}
+
+.light-cyan-color {
+    background-color:lightcyan;
+}
+
+.top-nav-blue {
+    background-color:red;
+}
+
+.main-wrapper{
+    height: 90vh;
+}
