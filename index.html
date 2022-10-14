@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Educatry</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    <div class="fullContainer banner " id="homeSection">
+        <!--------------Start Navigation bar------------------->
+        <header>
+            <div class="container">
+                <div class="logo" style="color:rgb(242, 48, 242); font-size: 30px; padding-top: 0; font-family: 'Monoton', cursive;">
+                 <a href="index.html">Edu<span style="color:rgb(244, 236, 75); font-size:50px;">C</span>atry</a>
+                </div>
+                <nav class="topnav">
+                    <ul>
+                        <li>
+                            <a href="index.html">Home</a>
+                        </li>
+                        <li>
+                            <a href="#aboutSection">About Us</a>
+                        </li>
+                        <li>
+                            <a href="#servicesSection">Services</a>
+                        </li>
+                        <li>
+                            <a href="#contactSection">Contact Us</a>
+                        </li>
+                        <li>
+                            <a href="signUpPage.html">Join Us</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <!--------------Navigation bar------------------->
+        <div class="container">
+            <h1>give a helping hand to children <span>Who</span> need</h1>
+            <p>  Most students have lost substantial instructional time and may not be ready for curricula that were age and grade appropriate prior to the pandemic. They will require remedial education to catch up on ‘lost learning’ and ensure students have digital access. 
+            </p>
+            <button>Give A Hand</button>
+        </div>
+    </div>
+    <!---start about us -->
+    <section class="fullContainer" id="aboutSection">
+        <div class="container">
+            <h2 class="sectionTitle">About Us</h2>
+        </div>
+    </section>
+            <div class="col-lg-12">
+                <div class="about">
+                  <div class="inner-section">
+                    <p class="text">
+                        In the last two years, the COVID pandemic has harmed many children all over
+                         the world. One of the priorities is to assist children who need to catch up on
+                          "lost learning," particularly those who have not had access to digital resources 
+                          to keep up with online education.
+                          Educatry is a Malaysian charity helps the student to proceed their 
+                          learning journey by providing digital resources from volunteers and teaching services
+                    </p>
+                    <div class="skills">
+                      <button onclick="window.location.href='/RegisterAsVolunteer.html'">Contact Us</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+ 
+    <!-----End About Us ---->
+    <!---------start services section -------->
+    <section class="fullContainer" id="servicesSection">
+        <div class="container">
+            <h2 class="sectionTitle">Services</h2>
+            <div class="cards">
+                <div class="donationBox">
+                    <!-- Start donation Box-->
+                    <div class="title">Teaching</div>
+                    <a href="RegisterAsVolunteer.html">
+                        <button>volunteer</button>
+                    </a>
+                    
+                    <!-- Ends donation Box-->
+                </div>
+                <div class="donationBox">
+                    <!-- Start donation Box-->
+                    <div class="title">Hiring school administrators</div>
+                    <a href="RegisterAsVolunteer.html">
+                        <button>Apply Now</button>
+                    </a>
+                    
+                    <!-- Ends donation Box-->
+                </div>
+                <div class="aidBox">
+                    <!-- aid applicant Box-->
+                    <div class="title">Digital Resources</div>
+                    <a href="RegisterAsVolunteer.html">
+                        <button>Volunteer</button>
+                    </a>
+                    <!-- Ends aid applicant Box-->
+                </div>
+            </div>
+        </div>
+    </section>
+     <!---------End services section -------->
+     <!-------------------------------------start contact form-------------->
+<a name="contactUs" ></a>
+<section class="fullContainer" id="contactSection">
+    <div class="container">
+        <h2 class="sectionTitle">Contact Us</h2>
+        <div class="container contact-form">
+            <div class="contact-image">
+                <img src="Images/contactUs.jpg" alt="conatct_image"/>
+            </div>
+            <form method="post">
+                <h3>Drop Us a Message</h3>
+               <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="text" name="txtName" class="form-control" placeholder="Your Name *" value="" />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="txtEmail" class="form-control" placeholder="Your Email *" value="" />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="txtPhone" class="form-control" placeholder="Your Phone Number *" value="" />
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" name="btnSubmit" class="btnContact" value="Send Message" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <textarea name="txtMsg" class="form-control" placeholder="Your Message *" style="width: 100%; height: 150px;"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </form>
+          </div>
+          <!-------------------------------------End contact form-------------->
+    </div>
+</section>
+
+<!-- start footer-->
+<footer class="bg-dark text-center text-white">
+  <!-- Grid container -->
+  <div class="container p-4 pb-0">
+    <!-- Section: Form -->
+    <section class="">
+      <form action="">
+        <!--Grid row-->
+        <div class="row d-flex justify-content-center">
+          <!--Grid column-->
+          <div class="col-auto">
+            <p class="pt-2">
+              <strong>Sign up for our newsletter</strong>
+            </p>
+          </div>
+          <!--Grid column-->
+
+          <!--Grid column-->
+          <div class="col-md-5 col-12">
+            <!-- Email input -->
+            <div class="form-outline form-white mb-4">
+              <input type="email" id="form5Example2" class="form-control" placeholder="Email address.." />
+            </div>
+          </div>
+          <!--Grid column-->
+
+          <!--Grid column-->
+          <div class="col-auto">
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-outline-light mb-4">
+              Subscribe
+            </button>
+          </div>
+          <!--Grid column-->
+        </div>
+        <!--Grid row-->
+      </form>
+    </section>
+    <!-- Section: Form -->
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    &copy;2022Educatry
+  </div>
+  <!-- Copyright -->
+</footer>
+<!--End footer-->
+    <script src="jS/jS.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
