@@ -104,6 +104,11 @@ function checkOccupation() {
   }
 }
 
+ // Check the DateOfBirth
+function checkDateOfBirth(){
+  
+} 
+
 
   // Add valid class & removes any invalid class
 function addIsValid(element){
