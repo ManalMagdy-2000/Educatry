@@ -1,6 +1,6 @@
 // Sign Up button events
-var loginBtn = document.getElementById("signUpBtn");
-loginBtn.addEventListener("click", function (event) {
+var signUpBtn = document.getElementById("signUpBtn");
+signUpBtn.addEventListener("click", function (event) {
   
   var statusArray = [];
   statusArray.push(checkUserName());
@@ -46,6 +46,63 @@ function checkUserName() {
       return false;
     }
   }
+
+  // Check the Full Name
+  function checkFullName() {
+    var fullName = document.getElementById("fullName");
+    var fullNameValue = fullName.value.trim();
+  
+    if(fullNameValue != ''){
+      addIsValid(fullName);
+      return true;
+    }else{
+      addIsInvalid(fullName);
+      return false;
+    }
+  }
+
+  // Check the Email format is valid
+  function checkEmail() {
+    var email = document.getElementById("email");
+    var emailValue = email.value.trim();
+    var regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  
+    if(regex.test(emailValue)){
+      addIsValid(email);
+      return true;
+    }else{
+      addIsInvalid(email);
+      return false;
+    }
+  }
+
+   // Check the Phone
+   function checkPhone() {
+    var phone = document.getElementById("phone");
+    var phoneValue = phone.value.trim();
+  
+    if(phoneValue != ''){
+      addIsValid(phone);
+      return true;
+    }else{
+      addIsInvalid(phone);
+      return false;
+    }
+  }
+
+  // Check the Ocuupation 
+function checkOccupation() {
+  var occupation = document.getElementById("occupation");
+  var occupationValue = occupation.value.trim();
+
+  if(occupationValue != ''){
+    addIsValid(occupation);
+    return true;
+  }else{
+    addIsInvalid(occupation);
+    return false;
+  }
+}
 
 
   // Add valid class & removes any invalid class
