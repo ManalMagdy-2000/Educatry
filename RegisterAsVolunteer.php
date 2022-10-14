@@ -1,3 +1,40 @@
+<?php
+
+session_start();
+
+require_once("config.php");
+
+$database = new MysqlDataProvider(CONFIG['db']);
+if(isset($_SESSION['user'])) {
+    redirectToHome();
+}
+
+if ($_SERVER['REQUEST_METHOD'] === "POST") {
+    if(isset( $_POST["signUpBtn"])){
+   
+    //include all common data
+    $username = trim($_POST["username"]);
+    $password = trim($_POST["password"]);
+    $fullName = trim($_POST["fullName"]);
+    $email = trim($_POST["email"]);
+    $phone = trim($_POST["phone"]);
+    $dateOfBirth = trim($_POST["dateOfBirth"]);
+    $occupation = trim($_POST["occupation"]);
+    
+    if {
+        $database->registerAsVolunteer($username, $password, $fullName, $email, $phone, $dateOfBirth, $occupation);
+        $database = null;
+        header("Location: Login.php");
+        exit(); 
+
+    } 
+
+    }
+    
+    }
+    
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
