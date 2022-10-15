@@ -1,0 +1,446 @@
+/*--------------- common style---------*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root{
+    background-color: (244, 236, 75);
+    --white:white;
+}
+button , body{
+    font-family: "poppins" , sans-serif;
+}
+p{
+    font-size: 14px;
+    line-height: 26px;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.fullContainer{
+    width: 100%;
+}
+.container{
+    width: 1300px;
+    margin: auto;
+}
+/* ----------End common style-----------*/
+
+/*-------------------Start Home style ------------------*/
+@media (min-width: 1200px){
+.container{
+    max-width: 1300px;
+}
+}
+header{
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    z-index: 2;
+}
+header .container{
+    display: flex;
+    justify-content: space-between;
+}
+header .container .logo{
+    padding: 15px 0;
+    height: 75px;
+}
+header .container .logo img{
+    height: 100%;
+}
+header nav ul{
+    list-style-type: none;
+    text-decoration: none;
+}
+header nav ul li{
+    display: inline-block;
+}
+header nav ul li a {
+    display: inline-block;
+    height: 75px;
+    line-height: 75px;
+    padding: 0px 15px;
+    text-decoration: none;
+    font-size: 16px;
+    color: white;
+    font-weight: bolder;
+    transition: 0.3s;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+header nav ul li a:hover{
+    background-color: rgb(244, 236, 75);
+    text-decoration: none;
+    color: whitesmoke;
+}
+.logo a{
+    text-decoration: none;
+    color:#fcb8fc; 
+    font-size: 30px; 
+    padding-top: 0; 
+    font-family: 'Monoton', cursive;
+}
+.logo a:hover{
+    text-decoration: none;
+    color:#fcb8fc; 
+}
+.logo .a span{
+    color: #fcb8fc; 
+    font-size:50px;
+}
+.banner{
+    min-height: 100vh;
+    width: 100%;
+    background-image: url(../images/wallpaper.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    
+}
+.banner h1{
+    margin-top: 230px;
+    display: inline-block;
+    font-size: 3.5rem;
+    color: #fff;
+    text-shadow: 0 0 2px #000;
+    width: 50%;
+    line-height: 4.2rem;
+    font-weight: 100;
+}
+.banner h1 span{
+    background-color: rgb(244, 236, 75);
+    display: inline-block;
+    line-height: 3.5rem;
+    padding: 0 15px;
+    font-weight: 600;
+    border-radius: 5px;
+}
+.banner p{
+    color: #fff;
+    width: 50%;
+    text-shadow: 0 0 2px #000;
+    margin-top: 10px;
+}
+.banner button{
+    background-color:rgb(244, 236, 75);
+    border: 0;
+    outline: none;
+    color: white;
+    padding: 10px 15px;
+    margin-top: 20px;
+    font-size: 18px;
+    border-radius: 3px;
+    font-weight: 600;
+}
+/*-------------------End Home style ------------------*/
+
+/*------------------ about us section-----------------*/
+.sectionTitle{ /*line decoration about us*/ 
+    width: 300px;
+    border-bottom: 3px solid rgb(244, 236, 75);
+    text-align:center;
+    font-size: 2rem;
+    font-weight: 200;
+    margin: 0 auto 0;
+    position: relative;
+    padding: 10px 0;
+    text-transform: uppercase;
+}
+
+.sectionTitle::after{ /*small diamond*/
+    display:inline-block;
+    content: "";
+    height: 15px;
+    width: 15px;
+    background-color: var(--themeYellow);
+    position: absolute;
+    left: calc(50% - 10px);
+    top: calc(75% - 7px);
+    transform: rotate(45deg) translate(50% , 50%);
+    border: 3px solid #fff;
+}
+
+section{
+    padding: 50px 0;
+    position: relative;
+    margin-top: 100px;
+}
+.sectionTitle p{
+    margin-bottom: 0%;
+}
+/*---------------------------start about us section -----------*/
+.about{
+    background: url(../images/wallpaper2.jpg) no-repeat;
+    background-size: 55%;
+    background-color: #fdfdfd;
+    overflow: hidden;
+    padding: 100px 0;
+}
+.inner-section{
+    width: 55%;
+    float: right;
+    background-color: #fdfdfd;
+    padding: 100px;
+    box-shadow: 10px 10px 8px rgba(0, 0, 0, 0.3);
+}
+.inner-section h1{
+    margin-bottom: 30px;
+    font-size: 30px;
+    font-weight: 900px;
+}
+.text{
+    font-size: 13px;
+    color: #545454;
+    line-height: 30px;
+    text-align: justify;
+    margin-bottom: 40px;
+}
+.skills button{
+    font-size: 22px;
+    text-align: center;
+    letter-spacing:2px;
+    border: none;
+    border-radius: 20px;
+    padding: 8px;
+    width: 200px;
+    background-color:rgb(244, 236, 75);;
+    color: white;
+    cursor: pointer;
+}
+.skills button:hover{
+    transition: 1s;
+    background-color: #ecf5f5;
+    color: #a9d6d3;
+}
+.about{
+    margin-top: 0%;
+}
+@media screen and (max-width:1200px){
+    .inner-section{
+        padding: 80px;
+    }
+}
+@media screen and (max-width:1000px){
+    .about{
+        background-size: 100%;
+        padding: 100px 40px;
+    }
+    .inner-section{
+        width:100%;
+    }
+}
+@media sreen and(max-width:600px){
+    .about{
+        padding: 0;
+    }
+    .inner-section{
+        padding: 60px;
+    }
+    .skills button{
+        font-size: 19px;
+        padding: 5px;
+        width: 160px;
+    }
+}
+/*-----------------------------------End about us section---------------*/
+/*------------------ End about us section-----------------*/
+/*---------start services section---------------*/
+    #servicesSection  .cards{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-top: 50px;
+        position: relative;
+        height: 245px;
+
+    }
+    #servicesSection  .cards > div {
+        width: 350px;;
+        background-color: #fcb8fc;
+        padding: 35px;
+        color: white;
+        text-align: center;
+        border-radius: 5px;
+        height: 215px;
+        border: 1px solid white;
+        transition: 0.4s;
+    }
+    #servicesSection  .cards > div .title{
+        font-size: 18px;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+    #servicesSection  .cards > div .p{
+        font-size: 14px;
+        margin-top: 15px;
+    }
+    #servicesSection  .cards > div button{
+        border: 1px solid rgb(244, 236, 75);
+        color: rgb(244, 236, 75);
+        background-color: whitesmoke;
+        outline: none;
+        padding: 12px 20px;
+        margin-top: 40px;
+        font-size: 15px;
+        font-weight:500;
+        border-radius: 3px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    #servicesSection  .cards > div:hover button {
+        background-color: rgb(244, 236, 75);
+        color: #fff;
+    }
+    #servicesSection  .cards > div:hover{
+        width: 400px;
+        margin-top: -20px;
+        border-color: rgb(244, 236, 75);
+        height: auto;
+
+    }
+
+
+/*---------end services section---------------*/
+  /*----------------------------start contact form--------------------------*/
+.contact-form{
+    background:#fcb8fc;
+    margin-top: 10%;
+    margin-bottom: 5%;
+    width: 70%;
+}
+.contact-form .form-control{
+    border-radius:1rem;
+}
+.contact-image{
+    text-align: center;
+}
+.contact-image img{
+    border-radius: 6rem;
+    width: 11%;
+    margin-top: -3%;
+}
+.contact-form form{
+    padding: 14%;
+}
+.contact-form form .row{
+    margin-bottom: -7%;
+}
+.contact-form h3{
+    margin-bottom: 8%;
+    margin-top: -10%;
+    text-align: center;
+    color: whitesmoke;
+}
+.contact-form .btnContact {
+    width: 50%;
+    border: none;
+    border-radius: 1rem;
+    padding: 1.5%;
+    background: rgb(244, 236, 75);
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+}
+.btnContactSubmit
+{
+    width: 50%;
+    border-radius: 1rem;
+    padding: 1.5%;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+/*----------------------------------End contact Form------------------*/
+ /*-------------------------------------------Login------------------------------------*/
+.loginPage{
+    background-color: white;
+
+}
+.loginPage label{
+    color: white;
+}
+
+.loginPage .container{
+	background-color: #a9d6d3;
+	border-radius: 5px;
+	box-shadow: 0 2px 5px whitesmoke;
+	overflow: hidden;
+	width: 400px;
+    max-width: 100%;
+    margin-top: 120px;
+}
+
+.loginPage .header {
+	border-bottom: 1px solid rgb(244, 236, 75);
+	padding: 20px 40px;
+}
+
+.loginPage .header h2 {
+    margin: 0;
+    font-weight: bold;
+    color: white;
+}
+
+.loginPage .form {
+	padding: 30px 40px;	
+}
+
+.loginPage .form-control {
+	margin-bottom: 10px;
+	padding-bottom: 20px;
+    position: relative;
+    border: none;
+    background-color: #a9d6d3;
+}
+
+.loginPage .form-control label {
+	display: inline-block;
+	margin-bottom: 5px;
+}
+/*--------------input-------------*/
+.loginPage .form-control input {
+	border: 2px solid #f0f0f0;
+	border-radius: 4px;
+	display: block;
+	font-family: inherit;
+	font-size: 14px;
+	padding: 10px;
+	width: 100%;
+}
+
+
+
+/* submit button */
+
+.loginPage .form .btn {
+	background-color: rgb(244, 236, 75);
+	border: 2px solid rgb(244, 236, 75);
+	border-radius: 4px;
+	color: #fff;
+	display: block;
+	font-family: inherit;
+	font-size: 16px;
+	padding: 10px;
+	margin-top: 20px;
+	width: 100%;
+}
+.loginPage .form .btn:hover{
+    color:rgb(244, 236, 75);
+    background-color: white;
+    border-color: white;
+}
+.registerLink{
+    color: rgb(244, 236, 75);
+   
+}
+.registerLink:hover{
+    color: rgb(244, 236, 75);
+}
+.noAccount{
+    margin-top: 10px;
+    color: white;
+}
+
+
+/*----------------------------------------------end login--------------------------------*/
