@@ -11,10 +11,10 @@
 <body>
   <div class="wrapper">
     <header>Admin Login</header>
-    <form action="#">
-      <div class="field email">
+    <form method="POST" action="http://localhost/BIT216/Educatry/educatryAdminHome.html" name="adminLoginForm">
+      <div class="field username">
         <div class="input-area">
-          <input type="text" placeholder="username">
+          <input type="text" placeholder="username" name="username" >
           <i class="icon fas fa-user"></i>
           <i class="error error-icon fas fa-exclamation-circle"></i>
         </div>
@@ -22,14 +22,14 @@
       </div>
       <div class="field password">
         <div class="input-area">
-          <input type="password" placeholder="Password">
+          <input type="password" placeholder="Password" name="password" >
           <i class="icon fas fa-lock"></i>
           <i class="error error-icon fas fa-exclamation-circle"></i>
         </div>
         <div class="error error-txt">Password can't be blank</div>
       </div>
       <div class="pass-txt"><a href="#">Forgot password?</a></div>
-      <input type="submit" value="Login">
+      <input type="submit" value="Login" name="adminLogin">
     </form>
   </div>
   <script src="Js/adminLoginPage.js"></script>
