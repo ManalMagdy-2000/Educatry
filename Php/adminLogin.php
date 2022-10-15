@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		
 		if(($user['username'] == $username) &&
 			($user['password'] == $password)) {
-				header("http://localhost/BIT216/Educatry/educatryAdminHome.html");
+				header("http://localhost/BIT216/Educatry/RegisterSchool.html");
 		}
 		else {
 			echo "<script language='javascript'>";
