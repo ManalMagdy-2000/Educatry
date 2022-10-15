@@ -1,38 +1,38 @@
 <?php
+require_once 'database.php';
 
-session_start();
-
-require_once("config.php");
-
-$database = new MysqlDataProvider(CONFIG['db']);
-if(isset($_SESSION['user'])) {
-    redirectToHome();
+function checkEmpty($var){
+    if (empty($var)){
+        return false;
+    }
+    else {
+        return true;
+    }
 }
 
-if ($_SERVER['REQUEST_METHOD'] === "POST") {
-    if(isset( $_POST["signUpBtn"])){
-   
-    //include all common data
-    $username = trim($_POST["username"]);
-    $password = trim($_POST["password"]);
-    $fullName = trim($_POST["fullName"]);
-    $email = trim($_POST["email"]);
-    $phone = trim($_POST["phone"]);
-    $dateOfBirth = trim($_POST["dateOfBirth"]);
-    $occupation = trim($_POST["occupation"]);
-    
-    if {
-        $database->registerAsVolunteer($username, $password, $fullName, $email, $phone, $dateOfBirth, $occupation);
-        $database = null;
-        header("Location: Login.php");
-        exit(); 
+if (isset($_POST)){
+    extract($_POST);
+    if (checkEmpty($username) and checkEmpty($password) and checkEmpty($fullName) and checkEmpty($email) 
+    and checkEmpty($phone) and checkEmpty($occupation) and checkEmpty($dateOfBirth))
+    {
+        
 
-    } 
+        $query="INSERT INTO volunteer (username, password, fullName, email, phone, occupation, dateOfBirth) VALUES
+         ($username', '$password', '$fullName', '$email', '$phone', '$occupation', '$dateOfBirth')";
+        $sql=mysqli_query($conn,$query)or die(mysqli_error($conn));
+        
+        echo "You are signed in";
 
     }
-    
+    else{
+        
+        echo "Please fill the empty fields";
+
+        
     }
-    
+
+
+}
 ?>
 
 <!DOCTYPE html>
@@ -75,10 +75,10 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
                                 <!--Username-->  
                                 <div class="form-floating-mb-3">
-                                    <label for="userName">Username</label>
-                                    <input type="text" class="form-control btn-lg" id="userName"
+                                    <label for="username">Username</label>
+                                    <input type="text" class="form-control btn-lg" id="username"
                                         placeholder="Username" required>
-                                    <div class="invalid-feedback">Please enter a Username</div>
+                                    <div class="invalid-feedback">Please enter a username</div>
                                 </div>
 
                                 <!--Password-->  
@@ -91,11 +91,11 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
                                         character must be a letter]</div>
                                 </div>
 
-                                <!--Fullname-->  
+                                <!--Full Name-->  
                                 <div class="form-floating-mb-3">
                                     <label for="fullName">Full Name</label>
                                     <input type="text" class="form-control btn-lg" id="fullName"
-                                        placeholder="fullName" required>
+                                        placeholder="Full Name" required>
                                     <div class="invalid-feedback">Please enter your full Name</div>
                                 </div>
 
@@ -109,7 +109,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
                                 <!--Phone-->  
                                 <div class="form-floating-mb-3">
-                                    <label for="phone">Phone Number</label>
+                                    <label for="text">Phone Number</label>
                                     <input type="text" class="form-control btn-lg" id="phone"
                                         placeholder="Phone Number" required>
                                     <div class="invalid-feedback">Please enter your phone number</div>
@@ -126,8 +126,8 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
                                 <!--Date of Birth-->  
                                 <div class="form-floating-mb-3">
                                     <label for="dateOfBirth">Date Of Birth</label>
-                                    <input type="date" class="form-control btn-lg id="dateOfBirth" 
-                                        placeholder="Date of Birth" required>
+                                    <input type="date" class="form-control btn-lg" id="dateOfBirth"
+                                        placeholder="Date Of Birth" required>
                                     <div class="invalid-feedback">Please enter your date of birth</div>
                                 </div>
                                 

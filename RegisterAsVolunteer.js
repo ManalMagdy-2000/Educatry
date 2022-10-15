@@ -5,7 +5,7 @@ signUpBtn.addEventListener("click", function (event) {
   var statusArray = [];
   statusArray.push(checkUserName());
   statusArray.push(checkPassword());
-  statusArray.push(checkFullname());
+  statusArray.push(checkFullName());
   statusArray.push(checkEmail());
   statusArray.push(checkPhone());
   statusArray.push(checkOccupation());
@@ -90,7 +90,7 @@ function checkUserName() {
     }
   }
 
-  // Check the Ocuupation 
+  // Check the Occupation 
 function checkOccupation() {
   var occupation = document.getElementById("occupation");
   var occupationValue = occupation.value.trim();
@@ -104,10 +104,41 @@ function checkOccupation() {
   }
 }
 
- // Check the DateOfBirth
-function checkDateOfBirth(){
-  
+// Date Picker set 18 years and above
+var startDate = "2004";
+var endDate = new Date().getFullYear() - 18;
+var interval = startDate + ":" + endDate;
+
+if (dd < 10) {
+   dd = '0' + dd;
+}
+
+if (mm < 10) {
+   mm = '0' + mm;
 } 
+
+ // Check the DateOfBirth
+ function checkDateOfBirth(){
+  var dateOfBirth = document.getElementById("dateOfBirth");
+  var validDate = Date.parse(dateOfBirth.value);
+
+  // must set, else, invalid comparison due to current time
+  startDate.setHours(0,0,0,0);
+
+  if(isNaN(validDate)){
+    addIsInvalid(dateOfBirth);
+    return false;
+  }
+  else {
+    if(validDate >= startDate){
+      addIsValid(dateOfBirth);
+      return true;
+    } else {
+      addIsInvalid(dateOfBirth);
+      return false;
+    }
+  }
+}
 
 
   // Add valid class & removes any invalid class
