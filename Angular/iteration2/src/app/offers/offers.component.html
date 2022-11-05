@@ -1,0 +1,172 @@
+﻿
+<div class="p-4">
+  <div class="container">
+<h1 id="reqTitle">Available Requests</h1>
+<h3 *ngIf="countRequests() == 0" id="reqErrMsg" class="space">No requests have been made yet!</h3>
+<div *ngFor="let school of schools">
+<c-accordion *ngIf="countNewRequests(school.schoolID) != 0">
+    <c-accordion-item style="margin: 1rem 0;" #item0="cAccordionItem" [visible]="false">
+      <ng-template cTemplateId="accordionHeaderTemplate">
+        <button (click)="item0.toggleItem()" [collapsed]="!item0.visible" cAccordionButton>
+          <div class="stats">
+            <h5 style="margin: 0 1rem;"><c-badge color="dark">ID: {{ school.schoolID }}</c-badge></h5> 
+          <h5 style="margin: 0 1rem"><c-badge color="dark">Name: {{ school.name }}</c-badge></h5> 
+          <h5 style="margin: 0 1rem"><c-badge color="dark">Address: {{ school.address }}</c-badge></h5> 
+          <h5 style="margin: 0 1rem"><c-badge color="dark">City: {{ school.city }}</c-badge></h5> 
+          <h5 style="margin: 0 1rem">
+            <c-badge *ngIf="countNewRequests(school.schoolID) == 0" color="light" shape="rounded-pill">{{ countNewRequests(school.schoolID) }}</c-badge>
+            <c-badge *ngIf="countNewRequests(school.schoolID) > 0" color="success" shape="rounded-pill">{{ countNewRequests(school.schoolID) }}</c-badge>
+          </h5> 
+          </div>
+        </button>
+      </ng-template>
+      <ng-template cTemplateId="accordionBodyTemplate">
+        <div class="accordion-body" style="padding: 0;">
+          <table
+          [hover]="false"
+          [responsive]="true"
+          [striped]="false"
+          cAlign="middle"
+          cTable
+          class="mb-0"
+        >
+                    <thead >
+                      <tr>
+                        <th scope="col" style="width: 10%">Request ID</th>
+                        <th scope="col" style="width: 15%">Date</th>
+                        <th scope="col" style="width: 15%">Time</th>
+                        <th scope="col" style="width: 20%">Student Level</th>
+                        <th scope="col" style="width: 10%">#</th>
+                        <th scope="col" style="width: 15%">Status</th>
+                        <th scope="col" style="width: 15%">Action</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                        <td colSpan="7" *ngIf="school.requests.length == 0">
+                          <h5 style="margin: 0.5rem; text-align: center;" >There is no requests for this school!</h5>
+                        </td>
+                   
+                    <tr *ngFor="let request of school.requests" >
+                      <ng-container *ngIf="request.status !='CLOSED'">
+                        <td>{{request.requestID}}</td>
+                        <td>{{request.date}}</td>
+                        <td>{{request.time}}</td>
+                        <td>{{request.studentLevel}}</td>
+                        <td>{{request.numberOfStudents}}</td>
+                        <td>
+                          <c-badge *ngIf="request.status == 'NEW'" color="success">{{request.status}}</c-badge>
+                            <c-badge *ngIf="request.status == 'CLOSED'" color="danger">{{request.status}}</c-badge>
+                        </td>
+                        <td><button [cModalToggle]="scrollableLongContentModal.id" class="btn btn-sm btn-primary mr-1" cButton (click)="setID(school.schoolID, request.requestID)"><img width="18px" src="../../assets/hand-svgrepo-com.svg" alt="arrow" loading="lazy">Offer</button></td>
+                  </ng-container >
+                  </tr>
+  
+                </tbody>
+                </table>
+        </div>
+      </ng-template>
+    </c-accordion-item>
+  </c-accordion>
+
+
+</div>
+
+<div *ngIf="user.role === 'SuperAdmin'" style="margin-top: 4.2rem;">
+<h1 id="reqTitle">Past Requests</h1>
+<h3 *ngIf="countPastRequests() == 0" id="reqErrMsg" class="space">No requests have been made yet!</h3>
+<div *ngFor="let school of schools">
+  <c-accordion *ngIf="countClosedRequests(school.schoolID) != 0">
+      <c-accordion-item style="margin: 1rem 0;" #item0="cAccordionItem" [visible]="false">
+        <ng-template cTemplateId="accordionHeaderTemplate">
+          <button (click)="item0.toggleItem()" [collapsed]="!item0.visible" cAccordionButton>
+            <div class="stats">
+              <h5 style="margin: 0 1rem;"><c-badge color="dark">ID: {{ school.schoolID }}</c-badge></h5> 
+            <h5 style="margin: 0 1rem"><c-badge color="dark">Name: {{ school.name }}</c-badge></h5> 
+            <h5 style="margin: 0 1rem"><c-badge color="dark">Address: {{ school.address }}</c-badge></h5> 
+            <h5 style="margin: 0 1rem"><c-badge color="dark">City: {{ school.city }}</c-badge></h5> 
+            <h5 style="margin: 0 1rem">
+              <c-badge *ngIf="countClosedRequests(school.schoolID) == 0" color="light" shape="rounded-pill">{{ countClosedRequests(school.schoolID) }}</c-badge>
+              <c-badge *ngIf="countClosedRequests(school.schoolID) > 0" color="success" shape="rounded-pill">{{ countClosedRequests(school.schoolID) }}</c-badge>
+            </h5> 
+            </div>
+          </button>
+        </ng-template>
+        <ng-template cTemplateId="accordionBodyTemplate">
+          <div class="accordion-body" style="padding: 0;">
+            <table
+            [hover]="false"
+            [responsive]="true"
+            [striped]="false"
+            cAlign="middle"
+            cTable
+            class="mb-0"
+          >
+                      <thead >
+                        <tr>
+                          <th scope="col" style="width: 10%">Request ID</th>
+                          <th scope="col" style="width: 15%">Date</th>
+                          <th scope="col" style="width: 15%">Time</th>
+                          <th scope="col" style="width: 20%">Student Level</th>
+                          <th scope="col" style="width: 10%">#</th>
+                          <th scope="col" style="width: 15%">Status</th>
+      
+                        </tr>
+                        </thead>
+                        <tbody>
+                          <td colSpan="7" *ngIf="school.requests.length == 0">
+                            <h5 style="margin: 0.5rem; text-align: center;" >There is no requests for this school!</h5>
+                          </td>
+                     
+                      <tr *ngFor="let request of school.requests" >
+                        <ng-container >
+                          <td>{{request.requestID}}</td>
+                          <td>{{request.date}}</td>
+                          <td>{{request.time}}</td>
+                          <td>{{request.studentLevel}}</td>
+                          <td>{{request.numberOfStudents}}</td>
+                          <td>
+                            <c-badge *ngIf="request.status == 'NEW'" color="success">{{request.status}}</c-badge>
+                            <c-badge *ngIf="request.status == 'CLOSED'" color="danger">{{request.status}}</c-badge>
+                          </td>
+                    </ng-container >
+                    </tr>
+    
+                  </tbody>
+                  </table>
+          </div>
+        </ng-template>
+      </c-accordion-item>
+    </c-accordion>
+  
+    
+  </div>
+  </div>
+
+  <c-modal #scrollableLongContentModal id="scrollableLongContentModal" alignment="center" scrollable>
+  <c-modal-header>
+    <h5 cModalTitle>Remarks</h5>
+    <button [cModalToggle]="scrollableLongContentModal.id" cButtonClose></button>
+  </c-modal-header>
+  <form cForm [formGroup]="form" (ngSubmit)="onSubmit()">
+  <c-modal-body>
+    <ng-container>
+      <div class="form-group col">
+        <label for="remarks">Remarks</label>
+        <input type="text" formControlName="remarks" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.remarks.errors }" />
+        <div *ngIf="submitted && f.remarks.errors" class="invalid-feedback">
+            <div *ngIf="f.remarks.errors.required">Remarks is required</div>
+        </div>
+    </div>
+    </ng-container>
+  </c-modal-body>
+  <c-modal-footer>
+    <button [cModalToggle]="scrollableLongContentModal.id" cButton color="secondary">
+      Close
+    </button>
+    <button cButton color="primary" type="submit">Save changes</button>
+  </c-modal-footer>
+</form>
+</c-modal>
+
+</div>
+</div>

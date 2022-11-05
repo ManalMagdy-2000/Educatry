@@ -1,0 +1,52 @@
+﻿
+<div class="p-4">
+    <div class="container">
+        
+
+        <c-container fluid>
+            <h1>Hi, {{user.fullname}}!</h1>
+          <h5>Welcome To Educatry System</h5>
+            <c-row [xs]="1" [lg]="3">
+              <c-col>
+                <c-card id="info" class="u-border u-border--bottom-right">
+                    <c-card-body>
+                        <h5 cCardTitle id="info">Schools</h5>
+                        <p cCardText>
+                        Schools are the main building blocks of the Educatry system. 
+                        They are the place where students learn. 
+                        </p>
+                    </c-card-body>
+                </c-card>
+              </c-col>
+              <c-col>
+                <c-card id="info" class="u-border u-border--bottom-right">
+                    <c-card-body>
+                        <h5 cCardTitle id="info">Requests</h5>
+                        <p cCardText>
+                        School admins make requests for volunteers to help them with 
+                        teaching and other activities.
+                        </p>
+                    </c-card-body>
+                </c-card>
+              </c-col>
+              <c-col>
+                <c-card id="info" class="u-border u-border--bottom-right">
+                    <c-card-body>
+                        <h5 cCardTitle id="info">Offers</h5>
+                        <p cCardText>
+                        Volunteers can offer their help to schools. And admins can 
+                        accept offers to a request.
+                        </p>
+                    </c-card-body>
+                </c-card>
+              </c-col>
+            </c-row>
+          </c-container>
+        
+    
+        <!-- <h3 *ngIf="isAdmin">Position: {{user.position}}!</h3>
+        <h3 *ngIf="isAdmin">School: {{school.name}}!</h3>
+
+        <p><button cButton (click)="logout()" color="primary" style="color: white;">Log out</button></p>        -->
+    </div>
+</div>
