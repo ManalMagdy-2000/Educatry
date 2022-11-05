@@ -1,0 +1,64 @@
+﻿
+<h1 *ngIf="isAddMode">Add User</h1>
+<h1 *ngIf="!isAddMode">Edit Profile</h1>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-row">
+        <div class="form-group col">
+            <label for="fullname">Fullname</label>
+            <input type="text" formControlName="fullname" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.fullname.errors }" />
+            <div *ngIf="submitted && f.fullname.errors" class="invalid-feedback">
+                <div *ngIf="f.fullname.errors.required">Fullname is required</div>
+            </div>
+        </div>
+        <div class="form-group col">
+            <label for="email">Email</label>
+            <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                <div *ngIf="f.email.errors.required">Email is required</div>
+                <div *ngIf="f.email.errors.pattern">Email must contains @mail.com</div>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col">
+            <label for="phone">Phone</label>
+            <input type="text" formControlName="phone" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" />
+            <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                <div *ngIf="f.phone.errors.required">Phone is required</div>
+                <div *ngIf="f.phone.errors.minlength" >minimum length is 8</div>
+            </div>
+        </div>
+        <div class="form-group col">
+            <label for="password">
+                Password
+                <em *ngIf="!isAddMode">(Leave blank to keep the same password)</em>
+            </label>
+            <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                <div *ngIf="f.password.errors.required">Password is required</div>
+                <div *ngIf="f.password.errors.pattern">Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters</div>
+            </div>
+        </div>
+    </div>
+    <div class="form-row" *ngIf="isAdmin">
+    <div class="form-group col">
+        <label for="position">Position</label>
+        <input type="text" formControlName="position" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.position.errors }" />
+        <div *ngIf="submitted && f.position.errors" class="invalid-feedback">
+            <div *ngIf="f.position.errors.required">Position is required</div>
+            <div *ngIf="f.position.errors.minlength" >minimum length is 8</div>
+        </div>
+    </div>
+</div>
+    <div class="form-group edit-flex">
+        <button routerLink="/users" class="btn btn-secondary" id="scAdminCancel">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1" ></span>
+            Cancel
+        </button>
+        <button [disabled]="loading" class="btn btn-primary" id="scAdminSave">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1" ></span>
+            <img width="18px" src="../../assets/tick-svgrepo-com.svg" alt="arrow" loading="lazy">
+            Save
+        </button>
+    </div>
+</form>

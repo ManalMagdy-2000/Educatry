@@ -1,0 +1,162 @@
+﻿<div class="p-4">
+  <div class="container">
+<h1 style="margin: 0 0 2rem 0;">School Requests & Offers</h1>
+
+<button *ngIf="requests.length >= 0" [cModalToggle]="scrollableLongContentModal.id" cButton size="lg" (click)="setID(school.schoolID, request.requestID)"><img width="18px" src="../../assets/swarm-request-svgrepo-com.svg" alt="arrow" loading="lazy">Create request</button>
+<c-accordion *ngFor="let request of requests" disabled>
+    <c-accordion-item style="margin: 1rem 0;" #item0="cAccordionItem" [visible]="false">
+      <ng-template cTemplateId="accordionHeaderTemplate">
+        <button (click)="item0.toggleItem()" [collapsed]="!item0.visible" cAccordionButton>
+          <div class="stats-2">
+            <h5 style="margin: 0 1rem;"><c-badge color="dark">ID: {{ request.requestID }}</c-badge></h5> 
+            <h5 style="margin: 0 1rem">
+              <c-badge *ngIf="request.status == 'NEW'" color="success">{{ request.status }}</c-badge>
+              <c-badge *ngIf="request.status == 'CLOSED'" color="danger">{{ request.status }}</c-badge>
+            </h5> 
+            <h5 style="margin: 0 1rem;"><c-badge color="dark">Date: {{ request.date }}</c-badge></h5> 
+          <h5 style="margin: 0 1rem"><c-badge color="dark">Time: {{ request.time }}</c-badge></h5> 
+          <h5 style="margin: 0 1rem"><c-badge color="dark">Student Level: {{ request.studentLevel }}</c-badge></h5> 
+          <h5 style="margin: 0 1rem"><c-badge color="dark">Students: {{ request.numberOfStudents }}</c-badge></h5> 
+          <h5 style="margin: 0 1rem">
+            <c-badge *ngIf="request.offers.length == 0" color="light" shape="rounded-pill">{{ request.offers.length }}</c-badge>
+            <c-badge *ngIf="request.offers.length > 0" color="success" shape="rounded-pill">{{ request.offers.length }}</c-badge>
+          </h5> 
+          </div>
+        </button>
+      </ng-template>
+      <ng-template cTemplateId="accordionBodyTemplate">
+        <div class="accordion-body" style="padding: 0;">
+          <table
+          [hover]="false"
+          [responsive]="true"
+          [striped]="false"
+          cAlign="middle"
+          cTable
+          class="mb-0"
+        >
+                    <thead>
+                      <tr>
+                        <th scope="col" style="width: 20%">Status</th>
+                        <th scope="col" style="width: 20%">Date</th>
+                        <th scope="col" style="width: 20%">By</th>
+                        <th scope="col" style="width: 20%">Remarks</th>
+                        <th *ngIf="request.status != 'CLOSED'" scope="col" style="width: 20%">Action</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                        <td colSpan="7" *ngIf="request.offers.length == 0">
+                          <h5 style="margin: 0.5rem; text-align: center;" >There is no requests for this school!</h5>
+                        </td>
+                    <tr *ngFor="let offer of request.offers">
+                      <ng-container>
+                        <td>
+                          <c-badge *ngIf="offer.offerStatus == 'PENDING' && request.status != 'CLOSED'" color="warning">{{offer.offerStatus}}</c-badge>
+                          <c-badge *ngIf="offer.offerStatus == 'PENDING' && request.status == 'CLOSED'" color="dark">NOT SELECTED</c-badge>
+                          <c-badge *ngIf="offer.offerStatus == 'ACCEPTED'" color="success">{{offer.offerStatus}}</c-badge>
+                          <c-badge *ngIf="offer.offerStatus == 'CLOSED'" color="danger">{{offer.offerStatus}}</c-badge>
+                        </td>
+                        <td>{{offer.offerDate}}</td>
+                        <td>{{offer.volunteer.username}}</td>
+                        <td>{{offer.remarks}}</td>
+                        <td *ngIf="request.status != 'CLOSED'"><button  style="color: white;" class="btn btn-sm btn-success mr-1" cButton (click)="setID(request.requestID, offer.offerID, 'ACCEPTED')"><img width="18px" src="../../assets/tick-svgrepo-com.svg" alt="arrow" loading="lazy">Accept</button>
+                          <!-- <button style="color: white;" class="btn btn-sm btn-danger mr-1" cButton (click)="setID(request.requestID, offer.offerID, 'ACCEPTED')">Close</button></td> -->
+                  </ng-container>
+                  </tr>
+                  <tr>
+                    <td align="center" colSpan="7">
+                      <button *ngIf="request.status != 'CLOSED'" style="color: white !important; background-color: #dc3545 !important; border: none;" cButton class="btn btn-sm btn-danger mr-1" (click)="setID(request.requestID, 1, 'PENDING')"><img width="18px" src="../../assets/close-svgrepo-com.svg" alt="arrow" loading="lazy">Close Request</button>
+                    </td>
+                  </tr>
+                </tbody>
+                </table>
+        </div>
+      </ng-template>
+    </c-accordion-item>
+  </c-accordion>
+
+  <c-modal #scrollableLongContentModal id="scrollableLongContentModal" alignment="center" scrollable>
+  <c-modal-header>
+    <h5 cModalTitle>Create a Request</h5>
+    <button [cModalToggle]="scrollableLongContentModal.id" cButtonClose></button>
+  </c-modal-header>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <c-modal-body>
+    <ng-container >
+      
+ 
+
+        <div class="form-group col">
+          <label for="description">Description</label>
+          <input type="text" formControlName="description" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.description.errors }" />
+          <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+              <div *ngIf="f.description.errors.required">Last Name is required</div>
+          </div>
+      </div>
+      <div class="form-group col">
+        <label for="date">Date</label>
+        <input type="date" formControlName="date" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.date.errors }" />
+        <div *ngIf="submitted && f.date.errors" class="invalid-feedback">
+            <div *ngIf="f.date.errors.required">Last Name is required</div>
+        </div>
+      </div>
+      <div class="form-group col">
+        <label for="time">Time</label>
+        <input [ngxTimepicker]="picker" type="text" formControlName="time" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.time.errors }" />
+        <div *ngIf="submitted && f.time.errors" class="invalid-feedback">
+            <div *ngIf="f.time.errors.required">Last Name is required</div>
+        </div>
+      </div>
+      <div class="form-group col">
+        <label for="studentLevel">Student Level</label>
+        <input type="text" formControlName="studentLevel" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.studentLevel.errors }" />
+        <div *ngIf="submitted && f.studentLevel.errors" class="invalid-feedback">
+            <div *ngIf="f.studentLevel.errors.required">Last Name is required</div>
+        </div>
+      </div>
+      <div class="form-group col">
+        <label for="numberOfStudents">Number of Students</label>
+        <input type="number" formControlName="numberOfStudents" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.numberOfStudents.errors }" />
+        <div *ngIf="submitted && f.numberOfStudents.errors" class="invalid-feedback">
+            <div *ngIf="f.numberOfStudents.errors.required">Last Name is required</div>
+        </div>
+      </div>
+
+
+      <div class="form-group col" *ngIf="!isResource">
+       
+        <a style="color: blue;" (click)="addResource()">
+          + Add Resource
+        </a>
+      </div>
+
+      <div class="form-group col" *ngIf="isResource">
+        <label for="resourceType">Resource Type</label>
+        <input type="text" formControlName="resourceType" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.resourceType.errors }" />
+        <div *ngIf="submitted && f.resourceType.errors" class="invalid-feedback">
+            <div *ngIf="f.resourceType.errors.required">Resource Type is required</div>
+        </div>
+      </div>
+
+      <div class="form-group col" *ngIf="isResource">
+        <label for="resourceQuantity">Resource Quantity</label>
+        <input type="number" formControlName="resourceQuantity" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.resourceQuantity.errors }" />
+        <div *ngIf="submitted && f.resourceQuantity.errors" class="invalid-feedback">
+            <div *ngIf="f.resourceQuantity.errors.required">Resource Quantity is required</div>
+        </div>
+      </div>
+
+    </ng-container>
+  </c-modal-body>
+  
+  <c-modal-footer>
+    <button [cModalToggle]="scrollableLongContentModal.id" cButton color="secondary" (click)="reset()">
+      Close
+    </button>
+    <button cButton color="primary" data-dismiss="scrollableLongContentModal.id" type="submit">Save changes</button>
+  </c-modal-footer>
+</form>
+</c-modal>
+
+</div>
+</div>
+<ngx-material-timepicker #picker></ngx-material-timepicker>

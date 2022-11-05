@@ -1,0 +1,36 @@
+﻿<h1 *ngIf="isAddMode">Add User</h1>
+<h1 *ngIf="!isAddMode">Edit User</h1>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-row">
+        <div class="form-group col">
+            <label for="offerStatus">First Name</label>
+            <input type="text" formControlName="offerStatus" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.offerStatus.errors }" />
+            <div *ngIf="submitted && f.offerStatus.errors" class="invalid-feedback">
+                <div *ngIf="f.offerStatus.errors.required">First Name is required</div>
+            </div>
+        </div>
+        <div class="form-group col">
+            <label for="offerDate">Last Name</label>
+            <input type="text" formControlName="offerDate" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.offerDate.errors }" />
+            <div *ngIf="submitted && f.offerDate.errors" class="invalid-feedback">
+                <div *ngIf="f.offerDate.errors.required">Last Name is required</div>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col">
+            <label for="remarks">remarks</label>
+            <input type="text" formControlName="remarks" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.remarks.errors }" />
+            <div *ngIf="submitted && f.remarks.errors" class="invalid-feedback">
+                <div *ngIf="f.remarks.errors.required">remarks is required</div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <button [disabled]="loading" class="btn btn-primary">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Save
+        </button>
+        <a routerLink="/users" class="btn btn-link">Cancel</a>
+    </div>
+</form>

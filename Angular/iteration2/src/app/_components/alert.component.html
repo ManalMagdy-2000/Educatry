@@ -1,0 +1,18 @@
+﻿<!-- <div *ngFor="let alert of alerts" class="{{cssClass(alert)}}">
+    <a class="close" (click)="removeAlert(alert)">&times;</a>
+    <span [innerHTML]="alert.message"></span>
+</div> -->
+
+
+<div class="position-relative">
+    <c-toaster placement="top-end" position="absolute">
+        <c-toast [autohide]="true" [fade]="true" visible *ngFor="let alert of alerts" color="{{cssClass(alert)}}">
+            <c-toast-header [closeButton]="false">
+              <toast-sample-icon></toast-sample-icon>
+              {{cssClass(alert).toUpperCase()}}
+              <small class="ms-auto">Now</small>
+            </c-toast-header>
+            <c-toast-body>{{alert.message}}</c-toast-body>
+          </c-toast>
+    </c-toaster>
+    </div>

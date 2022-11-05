@@ -1,0 +1,64 @@
+﻿<!-- nav -->
+<!-- <nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="user">
+    <div class="navbar-nav">
+        <a class="nav-item nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+        <a class="nav-item nav-link" routerLink="/users" routerLinkActive="active">Users</a>
+        <a class="nav-item nav-link" routerLink="/admin" *ngIf="isAdmin">Admin</a>
+        <a class="nav-item nav-link" routerLink="/schools" >Admin</a>
+        <a class="nav-item nav-link" (click)="logout()">Logout</a>
+    </div>
+</nav> -->
+
+<c-sidebar visible *ngIf="user">
+    <c-sidebar-brand [brandFull]="{
+      src: '../assets/educacity.png',
+      width: 150,
+      alt: 'CoreUI Logo'
+    }">
+
+  </c-sidebar-brand>
+  <!-- <div class="sidebar-user">
+  <h4>{{school.name}}</h4>
+  </div> -->
+    <c-sidebar-nav [navItems]="navItems"></c-sidebar-nav>
+    
+  </c-sidebar>
+  
+<!-- main app container -->
+
+<div class="wrapper d-flex flex-column min-vh-100 bg-light dark:bg-transparent">
+  <c-header>
+    <c-container fluid *ngIf="user">
+      <c-header-brand *ngIf="user.role === 'Admin'" [routerLink]>{{user?.position}} at {{school?.name}}</c-header-brand>
+      <c-header-brand *ngIf="user.role === 'SuperAdmin'" [routerLink]>Super Admin</c-header-brand>
+      <c-header-nav class="ms-auto">
+        <!-- <c-nav-item>
+          <a cNavLink routerLink="/components/alert">{{user.fullname}}</a>
+        </c-nav-item> -->
+        <c-nav-item>
+          <c-sidebar-toggler toggle="unfoldable" csidebartoggle="sidebar1" role="button" class="sidebar-toggler"></c-sidebar-toggler>
+        </c-nav-item>
+        <c-dropdown alignment="end">
+          <a cHeaderToggler cDropdownToggle cNavLink [caret]="false">
+            {{user?.fullname}} 
+            <c-avatar color="secondary">{{user?.fullname[0]}}</c-avatar>
+          </a>
+          <ul cDropdownMenu>
+            <li><a routerLink='/users/edit/{{user?.id}}' cDropdownItem>Edit profile</a></li>
+            <li>
+              <hr cDropdownDivider>
+            </li>
+            <li><a [routerLink] cDropdownItem (click)="logout()">Sign Out</a></li>
+          </ul>
+        </c-dropdown>
+      </c-header-nav>
+    </c-container>
+  </c-header>
+    <div class="body flex-grow-1 px-3 center-it">
+      <c-container breakpoint="lg" class="h-auto">
+        <alert></alert>
+        <router-outlet></router-outlet>
+      </c-container>
+    </div>
+   
+  </div>
