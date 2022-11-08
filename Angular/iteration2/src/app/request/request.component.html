@@ -89,35 +89,35 @@
           <label for="description">Description</label>
           <input type="text" formControlName="description" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.description.errors }" />
           <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
-              <div *ngIf="f.description.errors.required">Last Name is required</div>
+              <div *ngIf="f.description.errors.required">Description is required</div>
           </div>
       </div>
       <div class="form-group col">
         <label for="date">Date</label>
         <input type="date" formControlName="date" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.date.errors }" />
         <div *ngIf="submitted && f.date.errors" class="invalid-feedback">
-            <div *ngIf="f.date.errors.required">Last Name is required</div>
+            <div *ngIf="f.date.errors.required">Date is required</div>
         </div>
       </div>
       <div class="form-group col">
         <label for="time">Time</label>
         <input [ngxTimepicker]="picker" type="text" formControlName="time" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.time.errors }" />
         <div *ngIf="submitted && f.time.errors" class="invalid-feedback">
-            <div *ngIf="f.time.errors.required">Last Name is required</div>
+            <div *ngIf="f.time.errors.required">Time is required</div>
         </div>
       </div>
       <div class="form-group col">
         <label for="studentLevel">Student Level</label>
         <input type="text" formControlName="studentLevel" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.studentLevel.errors }" />
         <div *ngIf="submitted && f.studentLevel.errors" class="invalid-feedback">
-            <div *ngIf="f.studentLevel.errors.required">Last Name is required</div>
+            <div *ngIf="f.studentLevel.errors.required">Student Level is required</div>
         </div>
       </div>
       <div class="form-group col">
         <label for="numberOfStudents">Number of Students</label>
         <input type="number" formControlName="numberOfStudents" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.numberOfStudents.errors }" />
         <div *ngIf="submitted && f.numberOfStudents.errors" class="invalid-feedback">
-            <div *ngIf="f.numberOfStudents.errors.required">Last Name is required</div>
+            <div *ngIf="f.numberOfStudents.errors.required">number of students  required</div>
         </div>
       </div>
 
