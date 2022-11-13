@@ -79,11 +79,6 @@
                           <!-- <button style="color: white;" class="btn btn-sm btn-danger mr-1" cButton (click)="setID(request.requestID, offer.offerID, 'ACCEPTED')">Close</button></td> -->
                   </ng-container>
                   </tr>
-                  <tr>
-                    <td align="center" colSpan="7">
-                      <button *ngIf="request.status != 'CLOSED'" style="color: white !important; background-color: #dc3545 !important; border: none;" cButton class="btn btn-sm btn-danger mr-1" (click)="setID(request.requestID, 1, 'PENDING')"><img width="18px" src="../../assets/close-svgrepo-com.svg" alt="arrow" loading="lazy">Close Request</button>
-                    </td>
-                  </tr>
                 </tbody>
                 </table>
         </div>
