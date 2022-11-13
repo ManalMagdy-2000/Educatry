@@ -45,14 +45,14 @@
                 <label for="occupation">Occupation</label>
                 <input type="text" formControlName="occupation" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.occupation.errors }" />
                 <div *ngIf="submitted && f.occupation.errors" class="invalid-feedback">
-                    <div *ngIf="f.occupation.errors.required">Phone is required</div>
+                    <div *ngIf="f.occupation.errors.required">Occupation is required</div>
                 </div>
             </div>
             <div class="form-group">
                 <label for="dateOfBirth">Date Of Birth</label>
                 <input type="date" formControlName="dateOfBirth" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.dateOfBirth.errors }" />
                 <div *ngIf="submitted && f.dateOfBirth.errors" class="invalid-feedback">
-                    <div *ngIf="f.dateOfBirth.errors.required">Phone is required</div>
+                    <div *ngIf="f.dateOfBirth.errors.required">Date of Birth is required(Volunteer has to be 18 years and above)</div>
                 </div>
             </div>
             <div class="form-group" id="loginFormGroup">

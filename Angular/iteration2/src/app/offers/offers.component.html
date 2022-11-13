@@ -71,7 +71,7 @@
 
 </div>
 
-<div *ngIf="user.role === 'SuperAdmin'" style="margin-top: 4.2rem;">
+<div *ngIf="user?.role === 'SuperAdmin'" style="margin-top: 4.2rem;">
 <h1 id="reqTitle">Past Requests</h1>
 <h3 *ngIf="countPastRequests() == 0" id="reqErrMsg" class="space">No requests have been made yet!</h3>
 <div *ngFor="let school of schools">

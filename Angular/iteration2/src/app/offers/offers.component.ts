@@ -145,8 +145,14 @@ export class OfferComponent implements OnInit {
 
 
     setID(schoolID, requestID) {
-        this.schoolID = schoolID;
-        this.requestID = requestID;
+        if(this.user) {
+            this.schoolID = schoolID;
+            this.requestID = requestID;
+        }
+        else {
+            //redirect to login
+            this.router.navigate(['/account/login']);
+        }
     }
 
     private addOffer() {

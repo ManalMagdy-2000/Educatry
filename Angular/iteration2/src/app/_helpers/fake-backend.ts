@@ -177,7 +177,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         }
 
         function getSchools() {
-            if (!isLoggedIn()) return unauthorized();
+            // if (!isLoggedIn()) return unauthorized();
             return ok(schools.map(x => schoolDetails(x)));
         }
 

@@ -20,6 +20,7 @@ export class RequestComponent implements OnInit {
     isResource = false;
     submitted = false;
     success = false;
+    isTutor = true;
 
     constructor(
         private formBuilder: FormBuilder,
@@ -51,15 +52,17 @@ export class RequestComponent implements OnInit {
 
         this.form = this.formBuilder.group({
             description: ['', Validators.required],
-            date: ['', Validators.required],
-            time: ['', Validators.required],
-            studentLevel: ['', Validators.required],
-            numberOfStudents: ['', Validators.required],
+            date: ['', this.isTutor ? Validators.required : ''],
+            time: ['', this.isTutor ? Validators.required : ''],
+            studentLevel: ['', this.isTutor ? Validators.required : ''],
+            numberOfStudents: ['', this.isTutor ? Validators.required : ''],
             status: "NEW",
-            resourceType: [''],
-            resourceQuantity: [''],
+            resourceType: ['', this.isResource ? Validators.required : ''],
+            resourceQuantity: ['', this.isResource ? Validators.required : ''],
             offers: [[]]
         });
+
+
 
         if (!this.isAddMode) {
             this.schoolService.getSchoolById(this.schoolID)
@@ -72,8 +75,27 @@ export class RequestComponent implements OnInit {
     get f() { return this.form.controls; }
 
     addResource() {
-        this.isResource = true;
-        console.log(this.isResource)
+        //toggle isResource
+        if(this.isResource) {
+            this.isResource = false;
+            this.isTutor = true;
+        }
+        else {
+            this.isResource = true;
+            this.isTutor = false;
+        }
+
+        this.form = this.formBuilder.group({
+            description: ['', Validators.required],
+            date: ['', this.isTutor ? Validators.required : ''],
+            time: ['', this.isTutor ? Validators.required : ''],
+            studentLevel: ['', this.isTutor ? Validators.required : ''],
+            numberOfStudents: ['', this.isTutor ? Validators.required : ''],
+            status: "NEW",
+            resourceType: ['', this.isResource ? Validators.required : ''],
+            resourceQuantity: ['', this.isResource ? Validators.required : ''],
+            offers: [[]]
+        });
     }
 
     reset() {
@@ -81,6 +103,7 @@ export class RequestComponent implements OnInit {
     }
 
     onSubmit() {
+        
         this.submitted = true;
         console.log(this.form.value)
         // reset alerts on submit

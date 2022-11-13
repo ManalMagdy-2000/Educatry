@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { AccordionModule, SharedModule } from '@coreui/angular';
+import { AccordionModule, DropdownModule, SharedModule } from '@coreui/angular';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { RequestComponent } from './request.component';
 
@@ -7,7 +7,8 @@ import { RequestComponent } from './request.component';
   imports: [
     AccordionModule,
     SharedModule,
-    NgxMaterialTimepickerModule
+    NgxMaterialTimepickerModule,
+    DropdownModule
   ]
 })
 export class RequestModule {}

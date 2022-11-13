@@ -51,10 +51,17 @@ a { cursor: pointer }
       
   }
 
+  .bg-dark {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 1rem;
+  }
+
   .stats-2 {
     display: grid;
     grid-template-rows: 1fr;
-    grid-template-columns: 10% 10% 15% 15% 20% 15% 10%;
+    grid-template-columns: 0.5fr 0.5fr 0.5fr 1fr 1fr 1fr 1fr 1fr;
     grid-gap: 1rem;
     width: 100%;
     text-align: left;
@@ -157,7 +164,7 @@ a { cursor: pointer }
   .modal-backdrop {
     z-index: 997;
   }
-  
+
   .edit-flex {
     display: flex;
     align-items: center;
@@ -338,7 +345,7 @@ a { cursor: pointer }
     font-weight: 800 !important;
   }
 
-  input.form-control {
+  input.form-control, select.form-control {
     border: 2px solid #E7EDF5;
     height: 50px;
     background-color: white;

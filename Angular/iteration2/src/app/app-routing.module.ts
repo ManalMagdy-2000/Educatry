@@ -18,7 +18,7 @@ const routes: Routes = [
     { path: 'schools', loadChildren: schoolsModule, canActivate: [AuthGuard], data: { roles: [Role.SuperAdmin] } },
     { path: 'account', loadChildren: accountModule },
     { path: 'requests', component: RequestComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] }  },
-    { path: 'offers', component: OfferComponent, canActivate: [AuthGuard] },
+    { path: 'offers', component: OfferComponent},
     { path: 'admin', component: AdminComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
 
     // otherwise redirect to home
