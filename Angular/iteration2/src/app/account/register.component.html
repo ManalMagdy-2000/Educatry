@@ -52,7 +52,7 @@
                 <label for="dateOfBirth">Date Of Birth</label>
                 <input type="date" formControlName="dateOfBirth" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.dateOfBirth.errors }" />
                 <div *ngIf="submitted && f.dateOfBirth.errors" class="invalid-feedback">
-                    <div *ngIf="f.dateOfBirth.errors.required">Date of Birth is required(Volunteer has to be 18 years and above)</div>
+                    <div *ngIf="f.dateOfBirth.errors.required">Date of Birth is required (Volunteer has to be 18 years old and above)</div>
                 </div>
             </div>
             <div class="form-group" id="loginFormGroup">
